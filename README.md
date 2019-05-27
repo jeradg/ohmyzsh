@@ -1,3 +1,11 @@
+NOTE: I've added my .zshrc to this repo. I now symlink `~/.zshrc` to `~/.oh-my-zsh/.zshrc` with
+
+```sh
+ln -s ~/.oh-my-zsh/.zshrc ~/.zshrc
+```
+
+-----
+
 <p align="center">
   <img src="https://s3.amazonaws.com/ohmyzsh/oh-my-zsh-logo.png" alt="Oh My Zsh">
 </p>

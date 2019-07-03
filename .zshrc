@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$PATH:/Users/jeradgallinger/Library/Python/3.6/bin
-
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/jeradgallinger/.oh-my-zsh
 
@@ -108,6 +105,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # added by travis gem
 [ -f /Users/jeradgallinger/.travis/travis.sh ] && source /Users/jeradgallinger/.travis/travis.sh
+
+# python stuff
+export WORKON_HOME=~/.ve
+export PROJECT_HOME=~/Documents/Git
+eval "$(pyenv init -)"
+pyenv virtualenvwrapper_lazy
 
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh

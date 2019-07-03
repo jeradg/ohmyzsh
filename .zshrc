@@ -91,6 +91,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias mux="tmuxinator"
 
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="\vim"
+
 # optionally set DEFAULT_USER in ~/.zshrc to your regular username to hide the “user@hostname” info when you’re logged in as yourself on your local machine.
 export DEFAULT_USER=jeradgallinger
 export USER=`whoami`
@@ -105,12 +109,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # added by travis gem
 [ -f /Users/jeradgallinger/.travis/travis.sh ] && source /Users/jeradgallinger/.travis/travis.sh
-
-# python stuff
-export WORKON_HOME=~/.ve
-export PROJECT_HOME=~/Documents/Git
-eval "$(pyenv init -)"
-pyenv virtualenvwrapper_lazy
 
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh

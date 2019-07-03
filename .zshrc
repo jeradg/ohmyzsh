@@ -109,11 +109,5 @@ export NVM_DIR="$HOME/.nvm"
 # added by travis gem
 [ -f /Users/jeradgallinger/.travis/travis.sh ] && source /Users/jeradgallinger/.travis/travis.sh
 
-# python stuff
-export WORKON_HOME=~/.ve
-export PROJECT_HOME=~/Documents/Git
-eval "$(pyenv init -)"
-pyenv virtualenvwrapper_lazy
-
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh

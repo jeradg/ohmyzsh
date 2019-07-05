@@ -72,7 +72,9 @@ main() {
   fi
 
   printf "${BLUE}Using the Oh My Zsh template file and adding it to ~/.zshrc${NORMAL}\n"
-  cp "$ZSH"/templates/zshrc.zsh-template ~/.zshrc
+  # NOTE: I use a symlink to .zshrc, rather than overwriting it.
+  # cp "$ZSH"/templates/zshrc.zsh-template ~/.zshrc
+  ln -s ~/.oh-my-zsh/.zshrc ~/.zshrc
   sed "/^export ZSH=/ c\\
   export ZSH=\"$ZSH\"
   " ~/.zshrc > ~/.zshrc-omztemp

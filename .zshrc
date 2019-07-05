@@ -90,6 +90,14 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias mux="tmuxinator"
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="\vim"
+
+export TERM="tmux-256color"
+
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
 
 alias vim="nvim"
 alias vi="nvim"
@@ -100,6 +108,26 @@ export DEFAULT_USER=jeradgallinger
 export USER=`whoami`
 
 export PGDATA="/usr/local/var/postgres"
+
+export UID=$(id -u ${whoami})
+export GID=$(id -g ${whoami})
+
+alias docker="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker"
+alias docker-compose="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker-compose"
+
+# Start pinata-ssh-forward daemon if it isn't already running
+# (Inspired by https://stackoverflow.com/a/38576401)
+if [ ! "$(docker ps -q -f name=pinata-sshd)" ]; then
+  if [ "$(docker ps -aq -f status=exited -f name=pinata-sshd)" ]; then
+    # cleanup
+    echo "pinata-ssh-forward is stopped but has not been removed. Removing it before continuing."
+    docker rm pinata-sshd
+  fi
+
+  echo "Starting pinata-ssh-forward to forward ssh agent socket into docker containers"
+
+  sh pinata-ssh-forward
+fi
 
 # Load NVM
 # (Don't use the nvm oh-my-zsh plugin. Doesn't load nvm from brew on mac.)

@@ -4,6 +4,8 @@ NOTE: I've added my .zshrc to this repo. I now symlink `~/.zshrc` to `~/.oh-my-z
 ln -s ~/.oh-my-zsh/.zshrc ~/.zshrc
 ```
 
+(This is done automatically on install.)
+
 -----
 
 <p align="center">

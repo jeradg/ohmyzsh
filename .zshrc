@@ -87,8 +87,6 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
 alias mux="tmuxinator"
 alias vim="nvim"
 alias vi="nvim"
@@ -98,10 +96,6 @@ export TERM="tmux-256color"
 
 bindkey "\eOH" beginning-of-line
 bindkey "\eOF" end-of-line
-
-alias vim="nvim"
-alias vi="nvim"
-alias oldvim="\vim"
 
 # optionally set DEFAULT_USER in ~/.zshrc to your regular username to hide the “user@hostname” info when you’re logged in as yourself on your local machine.
 export DEFAULT_USER=jeradgallinger
@@ -120,13 +114,19 @@ alias docker-compose="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker-c
 if [ ! "$(docker ps -q -f name=pinata-sshd)" ]; then
   if [ "$(docker ps -aq -f status=exited -f name=pinata-sshd)" ]; then
     # cleanup
-    echo "pinata-ssh-forward is stopped but has not been removed. Removing it before continuing."
+    echo "pinata-ssh-forward is stopped but has not been removed. Removing it before continuing.\n"
     docker rm pinata-sshd
   fi
 
-  echo "Starting pinata-ssh-forward to forward ssh agent socket into docker containers"
+  echo "Starting pinata-ssh-forward to forward ssh agent socket into docker containers.\n"
 
   sh pinata-ssh-forward
+
+  if [ $? != "0" ]; then
+    echo "ERROR: pinata-ssh-forward failed."
+    echo "       Please run \"ssh-add -l\" to confirm that your ssh identity has been added."
+    echo "       If it has not, run \"ssh-add\" and try running pinata-ssh-forward again."
+  fi
 fi
 
 # Load NVM

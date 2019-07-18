@@ -140,3 +140,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
+
+# start rbenv
+eval "$(rbenv init -)"

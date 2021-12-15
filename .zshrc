@@ -1,3 +1,6 @@
+# zsh doesn't like it when you use it with multiple users in macOS...
+ZSH_DISABLE_COMPFIX=true
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/jeradgallinger/.oh-my-zsh
 
@@ -108,6 +111,10 @@ export GID=$(id -g ${whoami})
 
 alias docker="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker"
 alias docker-compose="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker-compose"
+alias build-latest="env UID=$(id -u ${whoami}) GID=$(id -g ${whoami}) docker build . -t eternal-sledgehammer/base:latest -f ./docker/Dockerfile.base --build-arg UID=$(id -u ${whoami}) --build-arg GID=$(id -u ${whoami})"
+
+# this is to avoid having to type docker-compose -f docker-compose-minimal-osx.yml for every command
+alias pncompose=docker-compose -f docker-compose-minimal-osx.yml "$@"
 
 # Start pinata-ssh-forward daemon if it isn't already running
 # (Inspired by https://stackoverflow.com/a/38576401)
@@ -146,3 +153,13 @@ export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+if [ -e /Users/jeradgallinger/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jeradgallinger/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Android dev tools
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

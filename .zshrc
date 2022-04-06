@@ -132,7 +132,4 @@ if [ -e /Users/jeradgallinger/.nix-profile/etc/profile.d/nix.sh ]; then . /Users
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Android dev tools
-export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

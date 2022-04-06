@@ -47,6 +47,9 @@ ZSH_THEME="agnoster"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# make fzf oh-my-zsh plugin work with Apple Silicon homebrew
+export FZF_BASE=/opt/homebrew/Cellar/fzf/0.29.0
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -116,7 +119,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -f /Users/jeradgallinger/.travis/travis.sh ] && source /Users/jeradgallinger/.travis/travis.sh
 
 # autojump
-[ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f `brew --prefix`/etc/profile.d/autojump.sh  ] && . `brew --prefix`/etc/profile.d/autojump.sh
 
 # start rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
